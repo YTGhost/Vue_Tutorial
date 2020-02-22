@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{num}}</div>
+        <div v-on:click='handle0'>
+            <button @click.stop='handle1'>点击1</button>
+        </div>
+        <div>
+            <a href="http://www.baidu.com" v-on:click.prevent='handle2'>百度</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script> <!-- Vue代码经过Vue框架转换成原生js代码 -->
+    <script type="text/javascript">
+        /* 
+        事件绑定-事件修饰符
+     */
+        var vm = new Vue({
+            el: '#app',
+            /* 元素的挂载位置（值可以是CSS选择器或者DOM元素） */
+            data: {
+                /* 模型数据（值是一个对象） */
+                num: 0
+            },
+            methods: {
+                handle0: function () {
+                    this.num++;
+                },
+                handle1: function (event) {
+                    // 阻止冒泡
+                    // event.stopPropagation();
+                },
+                handle2: function(event){
+                    // 阻止默认行为
+                    // event.preventDefault();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

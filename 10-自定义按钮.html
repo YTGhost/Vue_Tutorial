@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-on:keyup.aaa='handle' v-model='info'>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script> <!-- Vue代码经过Vue框架转换成原生js代码 -->
+    <script type="text/javascript">
+        /* 
+        事件绑定-自定义按钮修饰符
+        规则：自定义按键修饰符名字是自定义的，但是对应的值必须是按键对应event.keyCode值
+     */
+        Vue.config.keyCodes.aaa = 65; 
+        var vm = new Vue({
+            el: '#app',
+            /* 元素的挂载位置（值可以是CSS选择器或者DOM元素） */
+            data: {
+                info: ''
+            },
+            methods: {
+                handle: function(){
+                    console.log(event.keyCode);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

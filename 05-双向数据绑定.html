@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-cloak>{{msg}}</div>
+        <div>
+            <input type="text" v-model='msg'>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>    <!-- Vue代码经过Vue框架转换成原生js代码 -->
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app', /* 元素的挂载位置（值可以是CSS选择器或者DOM元素） */
+            data: {     /* 模型数据（值是一个对象） */
+                msg: 'Hello Vue',
+            }
+        });
+    </script>
+</body>
+</html>

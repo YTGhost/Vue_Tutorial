@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{num}}</div>
+        <div>
+            <button v-on:click='num++'>点击</button>
+            <button @click='num++'>点击1</button>
+            <button @click='handle'>点击2</button>
+            <button @click='handle()'>点击3</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>    <!-- Vue代码经过Vue框架转换成原生js代码 -->
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app', /* 元素的挂载位置（值可以是CSS选择器或者DOM元素） */
+            data: {     /* 模型数据（值是一个对象） */
+                num: 0
+            },
+            methods: {
+                handle: function(){
+                    /* 这里的this是Vue的实例对象 */
+                    console.log(this === vm);
+                    this.num++;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
