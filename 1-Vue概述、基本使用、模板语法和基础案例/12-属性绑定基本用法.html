@@ -13,12 +13,11 @@
 
 <body>
     <div id="app">
-        <div>{{msg}}</div>
-        <input type="text" :value="msg" @input='handle'>
-        <input type="text" :value="msg" @input='msg=$event.target.value'>
-        <input type="text" v-model='msg'>
+        <a v-bind:href="url">百度</a>
+        <a :href="url">百度</a> <!-- 简写 -->
+        <button v-on:click='handle'>切换</button>
     </div>
-    <script type="text/javascript" src="js/vue.js"></script> <!-- Vue代码经过Vue框架转换成原生js代码 -->
+    <script type="text/javascript" src="../js/vue.js"></script> <!-- Vue代码经过Vue框架转换成原生js代码 -->
     <script type="text/javascript">
         /* 
         事件绑定-按钮修饰符
@@ -27,12 +26,12 @@
             el: '#app',
             /* 元素的挂载位置（值可以是CSS选择器或者DOM元素） */
             data: {
-                msg: 'hello'
+                url: 'http://www.baidu.com'
             },
             methods: {
-                handle: function(event){
-                    // 使用输入域中的最新的数据覆盖原来的数据
-                    this.msg = event.target.value;
+                handle: function(){
+                    // 修改URL地址
+                    this.url = 'http://www.google.com';
                 }
             },
         });

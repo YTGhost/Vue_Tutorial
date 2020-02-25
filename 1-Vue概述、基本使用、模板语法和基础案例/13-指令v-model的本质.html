@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+        <input type="text" :value="msg" @input='handle'>
+        <input type="text" :value="msg" @input='msg=$event.target.value'>
+        <input type="text" v-model='msg'>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script> <!-- Vue代码经过Vue框架转换成原生js代码 -->
+    <script type="text/javascript">
+        /* 
+        事件绑定-按钮修饰符
+     */
+        var vm = new Vue({
+            el: '#app',
+            /* 元素的挂载位置（值可以是CSS选择器或者DOM元素） */
+            data: {
+                msg: 'hello'
+            },
+            methods: {
+                handle: function(event){
+                    // 使用输入域中的最新的数据覆盖原来的数据
+                    this.msg = event.target.value;
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
