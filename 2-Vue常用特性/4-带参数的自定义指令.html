@@ -8,28 +8,29 @@
 
 <body>
     <div id="app">
-        <input type="text" v-model.number='age'>
-        <input type="text" v-model.trim='info'>
-        <input type="text" v-model.lazy='msg'>
-        <div>{{msg}}</div>
-        <button @click='handle'>点击</button>
+        <input type="text" v-color='msg'>
     </div>
     <script type="text/javascript" src="../js/vue.js"></script> <!-- Vue代码经过Vue框架转换成原生js代码 -->
     <script type="text/javascript">
 
-
+    /* 自定义指令 */
+        Vue.directive('color', {
+            bind: function (el, binding) {
+                // 根据指令的参数设置背景色
+                // console.log(binding.value.color);
+                el.style.backgroundColor = binding.value.color;
+            }
+        });
         var vm = new Vue({
             el: '#app',
             /* 元素的挂载位置（值可以是CSS选择器或者DOM元素） */
             data: {
-                age: '',
-                info: '',
-                msg: ''
+                msg: {
+                    color: 'orange'
+                }
             },
             methods: {
                 handle: function () {
-                    console.log(this.age + 13);
-                    console.log(this.info);
                 }
             },
         });
